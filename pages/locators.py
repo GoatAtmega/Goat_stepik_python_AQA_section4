@@ -8,5 +8,7 @@ class MainPageLocators():
 
 
 class LoginPageLocators():
-    EXAMINATION_URL = driver.getCurrentUrl()
+    LOGIN_FORM = (By.ID, "login_form")
+    REGISTER_FORM = (By.ID, "register_form")
+
 
