@@ -31,10 +31,17 @@ class ProductPage(BasePage):
         else:
             print("\nAT! Test without promo ..")
 
+    def check_price(self):
+        price = self.browser.find_element(*ProductPageLocators.CHECK_PRICE).text
+        print(price)
+
+
     def add_to_basket(self):
         self.browser.find_element(*ProductPageLocators.ADD_BASKET).click()
         self.check_promo()
+        self.check_price()
         item_name_in_notification = self.browser.find_element(*ProductPageLocators.ITEM_NAME_IN_NOTIF).text
         item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME).text
         assert item_name == item_name_in_notification, \
             f"AT ERROR! Excepted - '{item_name}', result - {item_name_in_notification}"
+
