@@ -11,6 +11,7 @@ class ProductPageLocators():
     ADD_BASKET = (By.CSS_SELECTOR, ".btn-add-to-basket")
     ITEM_NAME = (By.CSS_SELECTOR, ".product_main h1")
     ITEM_NAME_IN_NOTIF = (By.CSS_SELECTOR, ".alert-success:nth-child(1) strong")
+    CHECK_PRICE = (By.CSS_SELECTOR, ".price_color:nth-child(2)")
 
 
 
