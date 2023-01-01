@@ -13,3 +13,12 @@ class ProductPageUrl():
     THE_CITY_AND_THE_STARS_95_ENDPOINT = "catalogue/the-city-and-the-stars_95/"
     THE_CITY_AND_THE_STARS_95_LINK = BASE_URL + THE_CITY_AND_THE_STARS_95_ENDPOINT
     THE_CITY_AND_THE_STARS_95_PROMO_LINK = BASE_URL + THE_CITY_AND_THE_STARS_95_ENDPOINT + PROMO_URL
+
+
+class ProductBugPageUrl():
+    BASE_URL = "http://selenium1py.pythonanywhere.com/"
+    PROMO_URL = "?promo=offer"
+
+    # BUG TUSK lesson3_step4.
+    CODERS_AT_WORK_BUG_ENDPOINT = "catalogue/coders-at-work_207/"
+    CODERS_AT_WORK_BUG_PROMO_LINK = BASE_URL + CODERS_AT_WORK_BUG_ENDPOINT + PROMO_URL
