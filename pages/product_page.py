@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from .locators import ProductPageLocators
 from .login_page import LoginPage
 from pages.url_rout import ProductPageUrl
+from pages.url_rout import ProductBugPageUrl
 from selenium.common.exceptions import NoAlertPresentException
 
 import math
@@ -25,7 +26,7 @@ class ProductPage(BasePage):
             print("No second alert presented")
 
     def check_promo(self):
-        if (ProductPageUrl.PROMO_URL) in self.url:
+        if (ProductBugPageUrl.PROMO_URL) in self.url:
             print("\nAT! Promo detected..")
             self.solve_quiz_and_get_code()
         else:
@@ -35,7 +36,6 @@ class ProductPage(BasePage):
         price = self.browser.find_element(*ProductPageLocators.CHECK_PRICE).text
         print(price)
 
-
     def add_to_basket(self):
         self.browser.find_element(*ProductPageLocators.ADD_BASKET).click()
         self.check_promo()
@@ -44,4 +44,3 @@ class ProductPage(BasePage):
         item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME).text
         assert item_name == item_name_in_notification, \
             f"AT ERROR! Excepted - '{item_name}', result - {item_name_in_notification}"
-
