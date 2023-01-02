@@ -31,8 +31,12 @@ class ProductPage(BasePage):
         else:
             print("\nAT! Test without promo ..")
 
+    def should_be_a_disappearing_message(self):
+        assert self.is_disappeared(*ProductPageLocators.ITEM_NAME_IN_NOTIF), \
+            "Success message is presented, but should not be"
+
     def should_not_be_success_message(self):
-        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+        assert self.is_not_element_present(*ProductPageLocators.ITEM_NAME_IN_NOTIF), \
             "Success message is presented, but should not be"
 
     def solve_quiz_and_get_code(self):
