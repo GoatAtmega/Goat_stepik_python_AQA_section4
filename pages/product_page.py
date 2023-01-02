@@ -11,6 +11,30 @@ import math
 
 class ProductPage(BasePage):
 
+    def add_to_basket(self):
+        self.browser.find_element(*ProductPageLocators.ADD_BASKET).click()
+        self.check_promo()
+        self.check_price()
+        item_name_in_notification = self.browser.find_element(*ProductPageLocators.ITEM_NAME_IN_NOTIF).text
+        item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME).text
+        assert item_name == item_name_in_notification, \
+            f"AT ERROR! Excepted - '{item_name}', result - {item_name_in_notification}"
+
+    def check_price(self):
+        price = self.browser.find_element(*ProductPageLocators.CHECK_PRICE).text
+        print(price)
+
+    def check_promo(self):
+        if (ProductPageUrl.PROMO_URL) in self.url:
+            print("\nAT! Promo detected..")
+            self.solve_quiz_and_get_code()
+        else:
+            print("\nAT! Test without promo ..")
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
         x = alert.text.split(" ")[2]
@@ -24,23 +48,3 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-
-    def check_promo(self):
-        if (ProductBugPageUrl.PROMO_URL) in self.url:
-            print("\nAT! Promo detected..")
-            self.solve_quiz_and_get_code()
-        else:
-            print("\nAT! Test without promo ..")
-
-    def check_price(self):
-        price = self.browser.find_element(*ProductPageLocators.CHECK_PRICE).text
-        print(price)
-
-    def add_to_basket(self):
-        self.browser.find_element(*ProductPageLocators.ADD_BASKET).click()
-        self.check_promo()
-        self.check_price()
-        item_name_in_notification = self.browser.find_element(*ProductPageLocators.ITEM_NAME_IN_NOTIF).text
-        item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME).text
-        assert item_name == item_name_in_notification, \
-            f"AT ERROR! Excepted - '{item_name}', result - {item_name_in_notification}"
