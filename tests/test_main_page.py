@@ -15,3 +15,10 @@ def test_guest_should_see_login_link(browser):
     page = MainPage(browser, link)
     page.open()
     page.should_be_login_link()
+
+
+@pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser, test_link):
+    page = MainPage(browser, test_link)
+    page.open()
+    page.go_to_view_basket()
