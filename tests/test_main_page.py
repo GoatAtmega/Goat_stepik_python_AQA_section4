@@ -1,5 +1,10 @@
-from .pages.main_page import MainPage
-import login_page
+from pages.main_page import MainPage
+import pages.login_page
+from pages.product_page import ProductPage
+from pages.base_page import BasePage
+from pages.test_link import ProductTestLink
+from pages.test_link import ProductBugTestLink
+import pytest
 
 
 def test_guest_can_go_to_login_page(browser):
