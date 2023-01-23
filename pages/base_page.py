@@ -8,8 +8,7 @@ from .locators import BasePageLocators
 
 class BasePage():
     def expectation_that_there_are_no_items_in_the_cart(self):
-        empty_basket = self.browser.find_element(*BasePageLocators.EMPTY_BASKET)
-        assert self.is_not_element_present(empty_basket), "basket is not empty"
+        assert self.is_not_element_present(*BasePageLocators.EMPTY_BASKET), "basket is not empty"
 
     def expecting_there_is_text_that_the_cart_is_empty(self):
         empty_cart_message = self.browser.find_element(*BasePageLocators.EMPTY_CART_MESSAGE)
