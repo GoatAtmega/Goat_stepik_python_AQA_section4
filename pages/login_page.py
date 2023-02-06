@@ -3,6 +3,18 @@ from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
+
+    def email_gen(self):
+        email = str(time.time()) + "@fakemail.org"
+        return email
+
+    def register_new_user(self):
+        email = self.email_gen()
+        self.browser.find_element(*LoginPageLocators.REGISTER_EMAIL).send_keys(email)
+        self.browser.find_element(*LoginPageLocators.REGISTER_PASS).send_keys("11111111Q")
+        self.browser.find_element(*LoginPageLocators.PASS_CONFIRM).send_keys("11111111Q")
+        self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()
+
     def should_be_login_page(self):
         self.should_be_login_url()
         self.should_be_login_form()
