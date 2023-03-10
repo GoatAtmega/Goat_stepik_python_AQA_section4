@@ -9,6 +9,8 @@ class ProductTestLink():
         (ProductPageUrl.THE_SHELLCODERS_HANDBOOK_PROMO_LINK),
         (ProductPageUrl.CODERS_AT_WORK_LINK),
         (ProductPageUrl.CODERS_AT_WORK_PROMO_LINK)
+        (ProductPageUrl.THE_CITY_AND_THE_STARS_95_LINK),
+        (ProductPageUrl.THE_CITY_AND_THE_STARS_95_PROMO_LINK)
     ]
 
 
