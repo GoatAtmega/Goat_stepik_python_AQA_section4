@@ -9,7 +9,7 @@ from pages.main_page import MainPage
 
 @pytest.mark.guest
 class TestGuestFromProductPage():
-    @pytest.mark.skip
+    @pytest.mark.need_review
     @pytest.mark.xfail
     @pytest.mark.parametrize("test_link", ProductBugTestLink.TEST_LINK)
     def test_guest_can_add_product_to_basket(self, browser, test_link):
@@ -17,7 +17,6 @@ class TestGuestFromProductPage():
         page.open()
         page.add_to_basket()
 
-    @pytest.mark.skip
     @pytest.mark.xfail
     @pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
     def test_guest_cant_see_success_message_after_adding_product_to_basket(self, browser, test_link):
@@ -26,14 +25,12 @@ class TestGuestFromProductPage():
         page.add_to_basket()
         page.should_not_be_success_message()
 
-    @pytest.mark.skip
     @pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
     def test_guest_cant_see_success_message(self, browser, test_link):
         page = ProductPage(browser, test_link)
         page.open()
         page.should_not_be_success_message()
 
-    @pytest.mark.skip
     @pytest.mark.xfail
     @pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
     def test_message_disappeared_after_adding_product_to_basket(self, browser, test_link):
@@ -48,6 +45,7 @@ class TestGuestFromProductPage():
         page.open()
         page.should_be_login_link()
 
+    @pytest.mark.need_review
     @pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
     def test_guest_can_go_to_login_page_from_product_page(self, browser, test_link):
         page = ProductPage(browser, test_link)
@@ -55,6 +53,7 @@ class TestGuestFromProductPage():
         page.should_be_login_link()
         page.go_to_login_page()
 
+    @pytest.mark.need_review
     @pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
     def test_guest_cant_see_product_in_basket_opened_from_product_page(self, browser, test_link):
         page = ProductPage(browser, test_link)
@@ -75,7 +74,6 @@ class TestUserAddToBasketFromProductPage():
         # page.delete_user()
         # page.should_not_be_authorized_user()
 
-    @pytest.mark.skip
     @pytest.mark.xfail
     @pytest.mark.parametrize("test_link", ProductBugTestLink.TEST_LINK)
     def test_user_can_add_product_to_basket(self, browser, test_link):
@@ -83,7 +81,6 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.add_to_basket()
 
-    @pytest.mark.skip
     @pytest.mark.parametrize("test_link", ProductTestLink.TEST_LINK)
     def test_user_cant_see_success_message(self, browser, test_link):
         page = ProductPage(browser, test_link)
